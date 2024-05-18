@@ -1,4 +1,5 @@
 import { chromium } from "playwright";
+import fs from "fs";
 
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage();
@@ -21,11 +22,14 @@ for (let i = 0; i < (await rows.count()); i++) {
 console.log(tableData);
 */
 
-const keyword = await page.$$eval("td", (results) =>
+const keywords = await page.$$eval("td", (results) =>
 	results.map((el) => {
 		const word = el.querySelector("span").textContent;
-		return word;
+		return { keyword: word };
 	})
 );
-
-console.log(keyword);
+let createStream = fs.createWriteStream("abapKeywords.ts");
+let fileContent = `export const abapKeywords = ${JSON.stringify(keywords)}`;
+createStream.write(fileContent);
+createStream.end();
+console.log("Fichero actualizado");

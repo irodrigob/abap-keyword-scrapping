@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      fs:
+        specifier: 0.0.1-security
+        version: 0.0.1-security
       playwright:
         specifier: ^1.44.0
         version: 1.44.0
@@ -16,6 +19,9 @@ importers:
         version: 1.44.0
 
 packages:
+
+  fs@0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
   fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
@@ -38,6 +44,8 @@ packages:
     hasBin: true
 
 snapshots:
+
+  fs@0.0.1-security: {}
 
   fsevents@2.3.2:
     optional: true
